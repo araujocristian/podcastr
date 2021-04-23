@@ -45,11 +45,13 @@ export default function Home() {
  * sejam pegas a todo momento da API. Só funciona em produção precisamos roda build
  */
 
-import { GetStaticProps } from "next";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { GetStaticProps } from "next";
 import { format, parseISO } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
+
 import { api } from "../services/api";
 import { convertDurationToTimeString } from "../utils/convertDurationToTimeString";
 import { usePlayer } from "../contexts/PlayerContext";
@@ -79,6 +81,10 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
 
   return (
     <div className={styles.homepage}>
+      <Head>
+        <title>Home | Podcastr</title>
+      </Head>
+
       <section className={styles.latestEpisodes}>
         <h2>Últimos lançamentos</h2>
         <ul>
